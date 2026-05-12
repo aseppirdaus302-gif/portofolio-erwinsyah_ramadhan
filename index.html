@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Portofolio | Home</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* =====================================================
+       PERBAIKAN RESPONSIF — index.html
+       Masalah yang diperbaiki:
+       1. hero-inner grid 2-col tidak break ke 1-col di mobile
+       2. hero-stats position:absolute meluber keluar layar
+       3. hero-avatar-wrap terlalu besar di HP kecil
+       4. highlights-grid tidak wrap ke 1-col
+       5. hero-btns tidak full-width di HP
+       ===================================================== */
+
+    /* ── Hero: struktur flex column di mobile ── */
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Pisahkan visual menjadi flex col: avatar di atas, stats di bawah ── */
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      animation: fadeInRight 0.9s ease 0.2s both;
+    }
+
+    /* ── Avatar wrap: ukuran wajar, tidak meluber ── */
+    .hero-avatar-wrap {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      flex-shrink: 0;
+    }
+
+    /* ── Stat cards: BUKAN absolute, cukup flex row biasa ── */
+    .hero-stats {
+      position: static !important;
+      left: auto !important;
+      bottom: auto !important;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .stat-card {
+      min-width: 130px;
+    }
+
+    /* ── Highlights: 3 col desktop ── */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    /* =====================================================
+       TABLET  ≤ 900px
+       ===================================================== */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+      /* foto di atas teks */
+      .hero-visual      { order: -1; }
+      .hero-btns        { justify-content: center; }
+      .hero-desc        { margin-inline: auto; }
+      .hero-greeting    { justify-content: center; }
+
+      .hero-avatar-wrap { width: 220px; height: 220px; }
+
+      .highlights-grid {
+        grid-template-columns: 1fr;
+        max-width: 460px;
+        margin-inline: auto;
+      }
+    }
+
+    /* =====================================================
+       MOBILE  ≤ 600px  (Android umum)
+       ===================================================== */
+    @media (max-width: 600px) {
+
+      /* Prevent horizontal scroll */
+      body { overflow-x: hidden; }
+
+      /* ── Navbar ── */
+      .nav-logo { font-size: 1.1rem; }
+
+      /* ── Hero section padding ── */
+      .hero {
+        min-height: 100svh;
+        padding-top: calc(var(--navbar-h) + 8px);
+        padding-bottom: 64px;
+      }
+
+      .hero-inner { gap: 24px; }
+
+      /* ── Avatar ── */
+      .hero-avatar-wrap { width: 170px; height: 170px; }
+
+      /* Sembunyikan ring berputar agar tidak ada overflow kiri/kanan */
+      .hero-avatar-ring,
+      .hero-avatar-ring-inner { display: none; }
+
+      .hero-avatar {
+        border: 4px solid var(--white);
+        box-shadow: 0 8px 28px rgba(39,76,119,0.22);
+      }
+      .avatar-placeholder { font-size: 5rem !important; }
+
+      /* ── Teks hero ── */
+      .hero-greeting {
+        font-size: 0.76rem;
+        padding: 5px 12px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .hero-name   { font-size: clamp(1.6rem, 7.5vw, 2.2rem); }
+      .hero-title  { font-size: 0.88rem; }
+      .hero-typing { font-size: 1rem; min-height: 1.6rem; }
+      .hero-desc   { font-size: 0.87rem; }
+
+      /* ── Tombol: tumpuk vertikal, full-width ── */
+      .hero-btns {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 11px;
+        width: 100%;
+        max-width: 300px;
+        margin-inline: auto;
+      }
+      .hero-btns .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 13px 18px;
+        font-size: 0.88rem;
+      }
+
+      /* ── Stat cards ── */
+      .hero-stats { gap: 10px; }
+      .stat-card  { min-width: 118px; padding: 9px 13px; font-size: 0.76rem; }
+      .stat-icon  { width: 28px; height: 28px; font-size: 0.8rem; }
+      .stat-info strong { font-size: 0.88rem; }
+
+      /* ── Scroll indicator: sembunyikan ── */
+      .scroll-indicator { display: none; }
+
+      /* ── Background shapes: kecilkan ── */
+      .shape-1 { width: 150px; height: 150px; top: -40px; right: -40px; }
+      .shape-2 { width: 90px; height: 90px; }
+      .shape-3 { display: none; }
+
+      /* ── Highlights ── */
+      .highlights { padding: 48px 0; }
+      .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        max-width: 100%;
+      }
+      .highlight-card  { padding: 22px 18px; }
+      .highlight-icon  { width: 50px; height: 50px; font-size: 1.2rem; margin-bottom: 12px; }
+      .highlight-card h3 { font-size: 1rem; }
+      .highlight-card p  { font-size: 0.85rem; }
+
+      /* ── CTA section ── */
+      .cta-section { padding: 52px 0 !important; }
+      .cta-section h2 { font-size: 1.35rem !important; }
+      .cta-section p  { font-size: 0.87rem !important; padding: 0 8px; }
+      .cta-btn {
+        padding: 13px 28px !important;
+        font-size: 0.88rem !important;
+      }
+
+      /* ── Footer ── */
+      .footer-logo  { font-size: 1.2rem; }
+      .footer-quote { font-size: 0.8rem; padding: 0 12px; }
+    }
+
+    /* =====================================================
+       VERY SMALL  ≤ 360px  (HP lama/kecil)
+       ===================================================== */
+    @media (max-width: 360px) {
+      .hero-avatar-wrap { width: 145px; height: 145px; }
+      .hero-name        { font-size: 1.45rem; }
+      .hero-greeting    { font-size: 0.7rem; }
+      .stat-card        { min-width: 105px; }
+      .hero-btns        { max-width: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════ -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">My<span>Portfolio</span></a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-me.html">About Me</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="certificates.html">Certificates</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html"><i class="fas fa-home"></i>&nbsp; Home</a>
+    <a href="about-me.html"><i class="fas fa-user"></i>&nbsp; About Me</a>
+    <a href="skills.html"><i class="fas fa-code"></i>&nbsp; Skills</a>
+    <a href="projects.html"><i class="fas fa-folder-open"></i>&nbsp; Projects</a>
+    <a href="certificates.html"><i class="fas fa-certificate"></i>&nbsp; Certificates</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i>&nbsp; Contact</a>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       HERO SECTION
+  ══════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- Kolom Kiri: Teks -->
+        <div class="hero-text">
+          <div class="hero-greeting">
+            <i class="fas fa-star"></i> Selamat Datang di Portofoliku!
+          </div>
+
+          <h1 class="hero-name">
+            Halo, Saya <br><span>Erwinsyah Ramadhan</span>
+          </h1>
+
+          <p class="hero-title">High School Student &bull;</p>
+
+          <div class="hero-typing">
+            <span id="typing-text"></span><span class="cursor"></span>
+          </div>
+
+          <p class="hero-desc">
+            Pelajar SMA yang aktif, kreatif, dan penuh semangat dalam menjelajahi dunia
+            teknologi dan organisasi sekolah. Selalu siap belajar hal baru!
+          </p>
+
+          <div class="hero-btns">
+            <a href="projects.html" class="btn btn-primary">
+              <i class="fas fa-rocket"></i> Explore Portfolio
+            </a>
+            <a href="contact.html" class="btn btn-outline">
+              <i class="fas fa-envelope"></i> Contact Me
+            </a>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Avatar + Stat Cards -->
+        <!--
+          PERBAIKAN UTAMA:
+          • .hero-stats dipindah KELUAR dari .hero-avatar-wrap
+          • .hero-visual jadi flex column: avatar atas, stats bawah
+          • Tidak ada position:absolute → tidak meluber di HP
+        -->
+        <div class="hero-visual">
+
+          <!-- Avatar -->
+          <div class="hero-avatar-wrap">
+            <div class="hero-avatar-ring"></div>
+            <div class="hero-avatar-ring-inner"></div>
+            <div class="hero-avatar">
+             <img src="photo.webp" alt="Foto Profil">
+              
+            </div>
+          </div>
+
+          <!-- Stat cards: di bawah avatar, bukan absolute -->
+          <div class="hero-stats">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
+              <div class="stat-info">
+                <strong><span class="counter" data-target="11">0</span>+</strong>
+                <span>Projects</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+              <div class="stat-info">
+                <strong><span class="counter" data-target="4">0</span>+</strong>
+                <span>Sertifikat</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /hero-visual -->
+
+      </div><!-- /hero-inner -->
+    </div>
+
+    <!-- Scroll indicator -->
+    
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       HIGHLIGHTS SECTION
+  ══════════════════════════════════════════ -->
+  <section class="highlights">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Apa yang Aku Lakukan?</h2>
+        <p>Berbagai hal yang aku geluti dan kembangkan sebagai pelajar yang aktif dan penuh semangat.</p>
+      </div>
+
+      <div class="highlights-grid">
+
+        <div class="highlight-card reveal">
+          <div class="highlight-icon"><i class="fas fa-utensils"></i></div>
+          <h3>Memasak</h3>
+          <p>Membuat olahan makanan yang bukan sekedar mencampur bahan tapi menciptakan rasa dan cerita.</p>
+        </div>
+
+        <div class="highlight-card reveal">
+          <div class="highlight-icon"><i class="fas fa-users"></i></div>
+          <h3>Organisasi Sekolah</h3>
+          <p>Aktif dalam Organisasi bulu tangkis dan band. Mengembangkan jiwa kepemimpinan dan kerjasama.</p>
+        </div>
+
+        <div class="highlight-card reveal">
+          <div class="highlight-icon"><i class="fas fa-palette"></i></div>
+          <h3>Desain Kreatif</h3>
+          <p>Merancang poster, presentasi, dan konten visual yang menarik menggunakan Canva dan tools desain lainnya.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       CTA SECTION
+  ══════════════════════════════════════════ -->
+  <section
+    class="section cta-section"
+    style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, var(--accent) 100%); padding: 80px 0;"
+  >
+    <div class="container" style="text-align:center;">
+      <h2 class="reveal" style="color:#fff; margin-bottom:14px;">Tertarik Berkolaborasi?</h2>
+      <p class="reveal" style="color:rgba(255,255,255,0.75); max-width:480px; margin:0 auto 32px; font-size:0.95rem;">
+        Aku terbuka untuk project bersama, diskusi ide, atau sekadar saling sapa. Jangan ragu untuk menghubungi!
+      </p>
+      <a
+        href="contact.html"
+        class="btn reveal cta-btn"
+        style="background:#fff; color:var(--primary); font-weight:700; padding:15px 38px; border-radius:50px; display:inline-flex;"
+      >
+        <i class="fas fa-paper-plane"></i>&nbsp; Hubungi Aku
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="container footer-inner">
+      <p class="footer-quote">"Belajar adalah investasi terbaik yang tidak akan pernah rugi."</p>
+      <div class="footer-socials">
+        <a href="https://instagram.com/win.senpaii" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@win.senpaii" class="footer-social" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="footer-social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Erwinsyah Ramadhan - SMA Fase IPA.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

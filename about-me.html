@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Portofolio | About Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* =====================================================
+       PERBAIKAN RESPONSIF — about-me.html
+       Yang diperbaiki:
+       1. about-grid 2-col tidak break ke 1-col di mobile
+       2. about-exp-badge position:absolute meluber
+       3. about-photo terlalu tinggi di HP
+       4. biodata-row overflow teks
+       5. bio-tags wrap dengan baik
+       6. org-grid & timeline padding HP
+       ===================================================== */
+
+    /* ── About grid: 2-col desktop ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* ── Foto wrapper ── */
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    /* ── Badge pengalaman: default kanan foto ── */
+    .about-exp-badge {
+      position: absolute;
+      bottom: 24px;
+      right: -20px;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      z-index: 2;
+    }
+    .about-exp-badge strong {
+      display: block;
+      font-size: 2rem;
+      color: var(--primary);
+      font-weight: 800;
+    }
+    .about-exp-badge span {
+      font-size: 0.75rem;
+      color: var(--text-light);
+    }
+
+    /* ── Biodata row: pastikan tidak overflow ── */
+    .biodata-row {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(39,76,119,0.08);
+      flex-wrap: wrap;
+    }
+    .biodata-row:last-child { border-bottom: none; }
+    .biodata-row i        { color: var(--primary); width: 18px; margin-top: 3px; font-size: 0.9rem; flex-shrink: 0; }
+    .biodata-row strong   { min-width: 90px; font-size: 0.87rem; color: var(--text-dark); flex-shrink: 0; }
+    .biodata-row span     { color: var(--text-mid); font-size: 0.87rem; flex: 1; min-width: 0; word-break: break-word; }
+
+    /* ── Bio tags: wrap dengan baik ── */
+    .bio-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 20px 0;
+    }
+    .bio-tag {
+      padding: 6px 14px;
+      border-radius: var(--radius-xl);
+      background: rgba(39,76,119,0.1);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── Timeline: padding cukup di kiri ── */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+      margin-top: 32px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px; bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary), var(--accent2));
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -34px; top: 6px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 2.5px solid var(--bg);
+      box-shadow: 0 0 0 3px rgba(39,76,119,0.2);
+    }
+    .timeline-year  { font-size: 0.78rem; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+    .timeline-item h4 { font-size: 0.95rem; margin-bottom: 5px; }
+    .timeline-item p  { font-size: 0.86rem; color: var(--text-mid); }
+
+    /* ── Org grid: 3-col desktop ── */
+    .org-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .org-card {
+      padding: 22px 20px;
+      border-radius: var(--radius-md);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      transition: var(--transition);
+    }
+    .org-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .org-card i   { font-size: 1.6rem; color: var(--primary); margin-bottom: 12px; display: block; }
+    .org-card h4  { font-size: 0.92rem; margin-bottom: 6px; }
+    .org-card p   { font-size: 0.82rem; }
+
+    /* =====================================================
+       TABLET  ≤ 900px
+       ===================================================== */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      /* Foto jadi lebih kecil dan centered */
+      .about-photo-wrap {
+        max-width: 340px;
+        margin: 0 auto;
+      }
+
+      /* Badge masuk ke dalam, tidak meluber */
+      .about-exp-badge {
+        right: 10px;
+        bottom: 16px;
+        padding: 12px 16px;
+      }
+      .about-exp-badge strong { font-size: 1.7rem; }
+
+      .org-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* =====================================================
+       MOBILE  ≤ 600px  (Android umum)
+       ===================================================== */
+    @media (max-width: 600px) {
+      body { overflow-x: hidden; }
+
+      /* ── Page hero ── */
+      .page-hero { padding: calc(var(--navbar-h) + 36px) 0 36px; }
+      .page-hero h1 { font-size: 1.8rem; }
+      .page-hero p  { font-size: 0.88rem; }
+
+      /* ── About section ── */
+      .about-grid { gap: 28px; }
+
+      .about-photo-wrap { max-width: 260px; }
+
+      /* Badge: lepas dari absolute agar tidak keluar layar */
+      .about-exp-badge {
+        position: static;
+        margin-top: 14px;
+        display: inline-block;
+        border-radius: var(--radius-sm);
+        padding: 12px 20px;
+        text-align: center;
+      }
+      /* Pusatkan badge di bawah foto */
+      .about-photo-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-photo {
+        width: 100%;
+        aspect-ratio: 1 / 1; /* persegi di mobile, tidak terlalu panjang */
+        border-radius: var(--radius-md);
+      }
+      .photo-placeholder { font-size: 7rem !important; }
+
+      /* ── Content ── */
+      .about-content p { font-size: 0.88rem; }
+
+      /* ── Biodata ── */
+      .biodata { padding: 18px 16px; }
+      .biodata-row strong { min-width: 80px; }
+
+      /* ── Bio tags ── */
+      .bio-tag { font-size: 0.76rem; padding: 5px 11px; }
+
+      /* ── Tombol ── */
+      .about-content .btn {
+        width: 100%;
+        justify-content: center;
+        max-width: 280px;
+        display: flex;
+      }
+
+      /* ── Timeline ── */
+      .timeline { padding-left: 22px; }
+      .timeline-item::before { left: -28px; width: 10px; height: 10px; }
+      .timeline-item h4 { font-size: 0.9rem; }
+      .timeline-item p  { font-size: 0.83rem; }
+
+      /* ── Org grid ── */
+      .org-grid { grid-template-columns: 1fr; gap: 14px; }
+      .org-card { padding: 18px 16px; }
+      .org-card i  { font-size: 1.4rem; margin-bottom: 8px; }
+      .org-card h4 { font-size: 0.88rem; }
+      .org-card p  { font-size: 0.8rem; }
+    }
+
+    /* =====================================================
+       VERY SMALL  ≤ 360px
+       ===================================================== */
+    @media (max-width: 360px) {
+      .about-photo-wrap { max-width: 220px; }
+      .page-hero h1     { font-size: 1.55rem; }
+      .biodata-row strong { min-width: 72px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════ -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">My<span>Portfolio</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-me.html">About Me</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="certificates.html">Certificates</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html"><i class="fas fa-home"></i>&nbsp; Home</a>
+    <a href="about-me.html"><i class="fas fa-user"></i>&nbsp; About Me</a>
+    <a href="skills.html"><i class="fas fa-code"></i>&nbsp; Skills</a>
+    <a href="projects.html"><i class="fas fa-folder-open"></i>&nbsp; Projects</a>
+    <a href="certificates.html"><i class="fas fa-certificate"></i>&nbsp; Certificates</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i>&nbsp; Contact</a>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PAGE HERO
+  ══════════════════════════════════════════ -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <h1>About Me</h1>
+      <p>Kenalan lebih dekat denganku — siapa aku dan apa yang aku suka.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+        <span>About Me</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       ABOUT SECTION
+  ══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- ── Kolom Foto ── -->
+        <!--
+          PERBAIKAN: about-exp-badge tidak lagi position:absolute di mobile.
+          Di ≤600px ia jadi static dan muncul di bawah foto.
+        -->
+        <div class="about-photo-wrap reveal">
+          <div class="about-photo">
+         <img src="photo.webp" alt="Foto Erwinsyah">
+          </div>
+          
+        </div>
+
+        <!-- ── Kolom Konten ── -->
+        <div class="about-content">
+          <div class="section-title" style="text-align:left; margin-bottom:24px;">
+            <h2>Perkenalan Diri</h2>
+          </div>
+
+          <p>
+            Halo! Nama saya <strong>Erwinsyah Ramadhan</strong>. Seorang pelajar SMA yang aktif,
+            komunikatif dan memiliki semangat untuk terus mengeksplorasi dunia teknologi, industri,
+            desain, dan organisasi. Saya percaya bahwa masa remaja adalah waktu terbaik untuk belajar
+            hal baru sebanyak mungkin.
+          </p>
+          <p>
+            Ketertarikan saya pada bidang teknologi — terutama di bidang teknologi pangan — dimulai
+            ketika saya mulai mendalami pelajaran di jurusan yang saya minati, dan saya juga terus
+            mendalami minat saya di bidang desain.
+          </p>
+
+          <!-- Biodata -->
+          <div class="biodata reveal">
+            <div class="biodata-row">
+              <i class="fas fa-user"></i>
+              <strong>Nama</strong>
+              <span>Erwinsyah Ramadhan</span>
+            </div>
+            <div class="biodata-row">
+              <i class="fas fa-school"></i>
+              <strong>Sekolah</strong>
+              <span>SMA Negeri 2 Kab. Tangerang</span>
+            </div>
+            <div class="biodata-row">
+              <i class="fas fa-map-marker-alt"></i>
+              <strong>Lokasi</strong>
+              <span>Kab. Tangerang, Indonesia</span>
+            </div>
+            <div class="biodata-row">
+              <i class="fas fa-heart"></i>
+              <strong>Hobi</strong>
+              <span>Olahraga, Memasak, Bermain Alat Musik</span>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="bio-tags reveal">
+            <span class="bio-tag"><i class="fas fa-utensils"></i> Memasak</span>
+            <span class="bio-tag"><i class="fas fa-palette"></i> Designer</span>
+            <span class="bio-tag"><i class="fas fa-users"></i> Organisasi &amp; Ekskul</span>
+          </div>
+
+          <a href="contact.html" class="btn btn-primary reveal" style="margin-top:8px;">
+            <i class="fas fa-paper-plane"></i> Hubungi Aku
+          </a>
+        </div>
+
+      </div><!-- /about-grid -->
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       TIMELINE PERJALANAN BELAJAR
+  ══════════════════════════════════════════ -->
+  <section class="section" style="background: var(--white); padding-top: 0;">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Perjalanan Belajar</h2>
+        <p>Setiap langkah adalah pelajaran berharga yang membentuk siapa saya sekarang.</p>
+      </div>
+
+      <div style="max-width: 680px; margin: 0 auto;">
+        <div class="timeline">
+
+          <!-- 2023 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-year">2023</div>
+
+            <h4>Bergabung Organisasi Bulu Tangkis &amp; Band</h4>
+            <p>
+              Aktif di bulu tangkis sebagai anggota aktif dan di band sebagai personil anggota aktif.
+              Kemudian pada 2024 diangkat sebagai ketua bulu tangkis.
+            </p>
+
+            <h4 style="margin-top:16px;">Mengikuti Kegiatan P5 Semester 1</h4>
+            <p>Membuat minyak berbahan kelapa, kelapa jelly, dan kompos dari serabut kelapa.</p>
+          </div>
+
+          <!-- 2024 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-year">2024</div>
+
+            <h4>Mengikuti Lomba O2SN</h4>
+            <p>Mengikuti lomba bulu tangkis O2SN tingkat Kabupaten dan masuk 10 besar.</p>
+
+            <h4 style="margin-top:16px;">Mengikuti Kegiatan P5 Semester 2</h4>
+            <p>Membuat gaun dan kerajinan dari bahan sampah plastik.</p>
+          </div>
+
+          <!-- 2025 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-year">2025</div>
+
+            <h4>Lomba Video Kreatif "Anak SMA Hebat" — Pocari Sweat</h4>
+            <p>Membuat video cerita singkat dan berpartisipasi dalam event nasional.</p>
+
+            <h4 style="margin-top:16px;">Mengikuti Kegiatan P5 Semester 3</h4>
+            <p>Membuat mural di tembok sekolah dengan tema batik sekaligus penilaian blok pramuka.</p>
+
+            <h4 style="margin-top:16px;">Tugas Proyek — Pertunjukan Drama</h4>
+            <p>
+              Mengikuti pertunjukan drama seangkatan sebagai pemeran setan bergenre horor, berdurasi 2 jam.
+            </p>
+
+            <h4 style="margin-top:16px;">Festival Seni Musik Sekolah</h4>
+            <p>Berpartisipasi dalam pergelaran festival seni musik seangkatan sebagai personil gitaris.</p>
+
+            <h4 style="margin-top:16px;">Mengikuti Kegiatan P5 Semester 4</h4>
+            <p>Menanam pohon disekolah untuk kegiatan penghijauan.</p>
+          </div>
+
+          <!-- 2026 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-year">2026</div>
+
+            <h4>Kegiatan Kokurikuler</h4>
+            <p>Menanam rempah-rempah, memanen, dan mengolahnya untuk dijual di stand bazar sekolah.</p>
+
+            <h4 style="margin-top:16px;">Tugas Proyek Syarat Kelulusan</h4>
+            <p>Membuat Karya Tulis Ilmiah (KTI) sebagai syarat kelulusan.</p>
+          </div>
+
+        </div><!-- /timeline -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       ORGANISASI & EKSKUL
+  ══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2>Organisasi &amp; Ekstrakurikuler</h2>
+        <p>Pengalaman organisasi yang membentuk karakter dan kemampuan kepemimpinan.</p>
+      </div>
+
+      <div class="org-grid">
+
+        <div class="org-card reveal">
+          <i class="fas fa-table-tennis-paddle-ball"></i>
+          <h4>Bulu Tangkis</h4>
+          <p>Bukan siapa yang paling kuat, tapi siapa yang paling pantang menyerah di lapangan.</p>
+          <span class="badge" style="margin-top:10px;">2023 – 2026</span>
+        </div>
+
+        <div class="org-card reveal">
+          <i class="fas fa-music"></i>
+          <h4>Band</h4>
+          <p>Musik bukan hanya soal suara, melainkan nada yang disertai perasaan.</p>
+          <span class="badge" style="margin-top:10px;">2024 – 2025</span>
+        </div>
+
+        <div class="org-card reveal">
+          <i class="fas fa-campground"></i>
+          <h4>Pramuka</h4>
+          <p>Anggota aktif Pramuka Penegak. Mengembangkan jiwa disiplin, kerja sama, dan kepemimpinan.</p>
+          <span class="badge" style="margin-top:10px;">2023 – 2026</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="container footer-inner">
+      <p class="footer-quote">"Belajar adalah investasi terbaik yang tidak akan pernah rugi."</p>
+      <div class="footer-socials">
+        <a href="https://instagram.com/win.senpaii" class="footer-social"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@win.senpaii" class="footer-social"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="footer-social"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Erwinsyah Ramadhan - SMA Fase IPA.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

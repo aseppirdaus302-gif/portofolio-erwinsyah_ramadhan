@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio | Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">My<span>Portfolio</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-me.html">About Me</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="certificates.html">Certificates</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html"><i class="fas fa-home"></i>&nbsp; Home</a>
+    <a href="about-me.html"><i class="fas fa-user"></i>&nbsp; About Me</a>
+    <a href="skills.html"><i class="fas fa-code"></i>&nbsp; Skills</a>
+    <a href="projects.html"><i class="fas fa-folder-open"></i>&nbsp; Projects</a>
+    <a href="certificates.html"><i class="fas fa-certificate"></i>&nbsp; Certificates</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i>&nbsp; Contact</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <h1>My Projects</h1>
+      <p>Kumpulan karya dan proyek yang pernah aku kerjakan dengan penuh dedikasi.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+        <span>Projects</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PROJECTS SECTION
+  ══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Filter Buttons -->
+      <div class="filter-btns reveal">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+         <button class="filter-btn" data-filter="school">Tugas Sekolah</button>
+        <button class="filter-btn" data-filter="design">Desain</button>
+         <button class="filter-btn" data-filter="web">Dokumentasi Activity</button>
+        
+    
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid">
+
+
+        <!-- Project 2: School Assignment Website -->
+        <div class="project-card reveal" data-category="school">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #1a3452, #3a6fa8);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-book-open"></i>
+              <span>KTI</span>
+            </div>
+            <div class="project-overlay">
+              <a href="https://kti-erwin.vercel.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Lihat Demo</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">KTI</div>
+            <h3>Project Karya Tulis Ilmiah</h3>
+            <p>Ilmu pengetahuan lahir dari rasa ingin tahu yang tinggi, Karya Tulis Ilmiah sebagai syarat kelulusan.</p>
+            <div class="project-tags">
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6: Presentation -->
+        <div class="project-card reveal" data-category="school">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #e53e3e, #fc8181);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-chalkboard-teacher"></i>
+              <span>Presentation</span>
+            </div>
+            <div class="project-overlay">
+              <a href="presentasi-kti.webp" target="_blank"><i class="fas fa-eye"></i> Lihat</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">Tugas Sekolah</div>
+            <h3>Project Presentasi Ilmiah</h3>
+            <p>Pemaparan hasil projek karya tulis ilmiah.</p>
+            <div class="project-tags">
+    
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Project 3: Simple Calculator -->
+        <div class="project-card reveal" data-category="school">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #8d6e63, #d7ccc8, #81c784);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-bottle-droplet"></i>
+              <span>P5 Semester 1</span>
+            </div>
+            <div class="project-overlay">
+              <a href="olahan-kelapa.webp" target="_blank"><i class="fas fa-external-link-alt"></i> Lihat Demo</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">P5 Semester 1</div>
+            <h3>Project Olahan Kelapa</h3>
+            <p>Indonesia kaya akan sumber daya alam, maka kita manfaatkan sebaik baiknya dengan menjadikanya sebuah produk bermutu tinggi.</p>
+            <div class="project-tags">
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 1: Portfolio Website -->
+        <div class="project-card reveal" data-category="school">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-recycle"></i>
+              <span>P5 Semester 2</span>
+            </div>
+            <!-- Ganti dengan screenshot: <img src="assets/proj-portfolio.jpg" alt="Portfolio"> -->
+            <div class="project-overlay">
+              <a href="project-plastik.webp" target="_blank"><i class="fas fa-external-link-alt"></i> Lihat Demo</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">P5 Semester 2</div>
+            <h3>Project Kerajinan Sampah Plastik</h3>
+            <p>Membuat kerajinan dari sampah plastik bisa mendapatkan keuntungan sekaligus mengurangi dampak pencemaran lingkungan.</p>
+            <div class="project-tags">
+            
+            </div>
+          </div>
+        </div>
+
+         <!-- Project 1: Portfolio Website -->
+        <div class="project-card reveal" data-category="school">
+          <div class="project-thumb"  style="background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #5f27cd);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-palette"></i>
+              <span>P5 Semester 3</span>
+            </div>
+            <!-- Ganti dengan screenshot: <img src="assets/proj-portfolio.jpg" alt="Portfolio"> -->
+            <div class="project-overlay">
+              <a href="mural.webp" target="_blank"><i class="fas fa-external-link-alt"></i> Lihat Demo</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">P5 Semester 3</div>
+            <h3>Project Mural</h3>
+            <p>Membuat mural bertema berbagai macam batik salah satu cara agar dapat lebih banyak tau tentang budaya batik itu sendiri.</p>
+            <div class="project-tags">
+            
+            </div>
+          </div>
+        </div>
+
+         <!-- Project 1: Portfolio Website -->
+        <div class="project-card reveal" data-category="school">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #2e7d32, #66bb6a, #c8e6c9);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-seedling"></i>
+              <span>P5 Semester 4</span>
+            </div>
+            <!-- Ganti dengan screenshot: <img src="assets/proj-portfolio.jpg" alt="Portfolio"> -->
+            <div class="project-overlay">
+              <a href="project-tanahliat.webp" target="_blank"><i class="fas fa-external-link-alt"></i> Lihat Demo</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">P5 Semester 4</div>
+            <h3>Project Penghijauan Lingkungan Sekolah</h3>
+            <p>Salah satu cara agar lingkungan seimbang maka dibutuhkan penghijauan, salah satunya menanam pohon dilingkungan sekolah.</p>
+            <div class="project-tags">
+            
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 1: Portfolio Website -->
+        <div class="project-card reveal" data-category="school">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-ghost"></i>
+              <span>Drama Horor</span>
+            </div>
+            <!-- Ganti dengan screenshot: <img src="assets/proj-portfolio.jpg" alt="Portfolio"> -->
+            <div class="project-overlay">
+              <a href="horor.webp" target="_blank"><i class="fas fa-external-link-alt"></i> Lihat Demo</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">Penampilan Drama Horor</div>
+            <h3>Project Drama Horor</h3>
+            <p>Drama mengajarkan saya bersandiwara yang membuat saya paham bahwa sudut pandang orang itu berbeda-beda.</p>
+            <div class="project-tags">
+            
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal" data-category="school">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #8e2de2, #4a00e0);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-music"></i>
+              <span>Seni Musik</span>
+            </div>
+            <!-- Ganti dengan screenshot: <img src="assets/proj-portfolio.jpg" alt="Portfolio"> -->
+            <div class="project-overlay">
+              <a href="music-guitar.webp" target="_blank"><i class="fas fa-external-link-alt"></i> Lihat Demo</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">Pergelaran Seni Musik</div>
+            <h3>Project Seni Musik</h3>
+            <p>Band mengajarkan bahwa kekompakan dalam tim lebih penting dari apapun itu.</p>
+            <div class="project-tags">
+            
+            </div>
+          </div>
+        </div>
+
+
+        <div class="project-card reveal" data-category="school">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-people-group"></i>
+              <span>Kokurikuler</span>
+            </div>
+            <!-- Ganti dengan screenshot: <img src="assets/proj-portfolio.jpg" alt="Portfolio"> -->
+            <div class="project-overlay">
+              <a href="kokurikuler.webp" target="_blank"><i class="fas fa-external-link-alt"></i> Lihat Demo</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">Kegiatan Kokurikuler</div>
+            <h3>Project Kegiatan Kokurikuler</h3>
+            <p>Kokurikuler mengajarkan saya arti menanam, merawat, dan memanen rempah-rempah indonesia.</p>
+            <div class="project-tags">
+            
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Landing Page -->
+        <div class="project-card reveal" data-category="web">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #274c77, #6096ba);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-camera"></i>
+              <span>Dokumentasi Ke-1</span>
+            </div>
+            <div class="project-overlay">
+              <a href="dokumentasi-1.webp" target="_blank"><i class="fas fa-external-link-alt"></i> Lihat Demo</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">Dokumentasi</div>
+            <h3>Dokumentasi Kegiatan Olahraga</h3>
+            <p>Olahraga adalah hobi sekaligus kegiatan yg saya sukai karna dapat menjaga tubuh tetap sehat.</p>
+            <div class="project-tags">
+              
+            </div>
+          </div>
+        </div>
+
+         <div class="project-card reveal" data-category="web">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #274c77, #6096ba);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-camera"></i>
+              <span>Dokumentasi Ke-2</span>
+            </div>
+            <div class="project-overlay">
+              <a href="dokumentasi-2.webp" target="_blank"><i class="fas fa-external-link-alt"></i> Lihat Demo</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">Dokumentasi</div>
+            <h3>Dokumentasi Kegiatan senin musik</h3>
+            <p>Kegiatan bermain gitar salah satu hobi saya untuk mengekpresikan perasaan melalui musik.</p>
+            <div class="project-tags">
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal" data-category="web">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #274c77, #6096ba);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-camera"></i>
+              <span>Dokumentasi Ke-3</span>
+            </div>
+            <div class="project-overlay">
+              <a href="sosialisasi.webp" target="_blank"><i class="fas fa-external-link-alt"></i> Lihat Demo</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">Dokumentasi</div>
+            <h3>Dokumentasi Kegiatan Sosialisasi</h3>
+            <p>Berpidato adalah salah satu kegiatan yg saya sukai karna dapat meningkatkan kemampuan public speaking saya dan membuat lebih percaya diri.</p>
+            <div class="project-tags">
+              
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Project 5: Poster Design -->
+        <div class="project-card reveal" data-category="design">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #004d40, #00796b, #26a69a);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-image"></i>
+              <span>Desain Logo</span>
+            </div>
+            <div class="project-overlay">
+              <a href="logo badmin.webp" target="_blank"><i class="fas fa-eye"></i> Lihat</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">Desain</div>
+            <h3>Desain Logo Ekstrakurikuler</h3>
+            <p>Mendesain logo organisasi membuat saya merasa terus hidup di dalamnya.</p>
+            <div class="project-tags">
+              <span class="project-tag">Canva</span>
+              
+            </div>
+          </div>
+        </div>
+
+         <!-- Project 5: Poster Design -->
+        <div class="project-card reveal" data-category="design">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #cb2d3e, #ef473a);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-image"></i>
+              <span>Sumpah Pemuda</span>
+            </div>
+            <div class="project-overlay">
+              <a href="sumpah pemuda.webp" target="_blank"><i class="fas fa-eye"></i> Lihat</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">Desain</div>
+            <h3>Desain Poster Sumpah Pemuda</h3>
+            <p>Memperingati dan menghayati dalam jiwa, hari sumpah pemuda</p>
+            <div class="project-tags">
+              <span class="project-tag">Canva</span>
+              
+            </div>
+          </div>
+        </div>
+
+
+       
+
+        <!-- Project 8: Social Media Design -->
+        <div class="project-card reveal" data-category="design">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #f7971e, #ffd200, #ff512f);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-image"></i>
+              <span>Sport Desain</span>
+            </div>
+            <div class="project-overlay">
+              <a href="promosi.webp" target="_blank"><i class="fas fa-eye"></i> Lihat</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">Desain</div>
+            <h3>Desain Badminton</h3>
+            <p>Mendesain kegiatan demo ekstrakurikuler untuk join organisasi.</p>
+            <div class="project-tags">
+              <span class="project-tag">Canva</span>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal" data-category="design">
+          <div class="project-thumb" style="background: linear-gradient(135deg, #d7ccc8, #8d6e63, #3e2723);">
+            <div class="project-thumb-placeholder">
+              <i class="fas fa-image"></i>
+              <span>Cover Desain</span>
+            </div>
+            <div class="project-overlay">
+              <a href="cover.webp" target="_blank"><i class="fas fa-eye"></i> Lihat</a>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">Desain</div>
+            <h3>Book Cover Desain</h3>
+            <p>Mendesain cover buku naskah drama horor.</p>
+            <div class="project-tags">
+              <span class="project-tag">Canva</span>
+
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /projects-grid -->
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="padding: 64px 0;">
+    <div class="container" style="text-align:center;">
+      <div class="reveal"s>
+        <h2 style="margin-bottom:12px;">Punya Ide Project Bersama?</h2>
+        <p style="color:var(--text-light); max-width:460px; margin: 0 auto 28px;">
+          Aku selalu terbuka untuk kolaborasi dan proyek baru yang menarik!
+        </p>
+        <a href="contact.html" class="btn btn-primary">
+          <i class="fas fa-rocket"></i> Mari Berkolaborasi
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <p class="footer-quote">"Belajar adalah investasi terbaik yang tidak akan pernah rugi."</p>
+      <div class="footer-socials">
+        <a href="https://instagram.com/win.senpaii" class="footer-social"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@win.senpaii" class="footer-social"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="footer-social"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Erwinsyah Ramadhan - SMA Fase IPA</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

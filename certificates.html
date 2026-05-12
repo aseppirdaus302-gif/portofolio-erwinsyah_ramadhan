@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Portofolio | Certificates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* =====================================================
+       PERBAIKAN RESPONSIF — certificates.html
+       Masalah utama: cert-grid minmax(280px) tidak break
+       ke 1-col di HP kecil sehingga card nyamping/overflow.
+       ===================================================== */
+
+    /* ── Pastikan tidak ada horizontal scroll ── */
+    body { overflow-x: hidden; }
+
+    /* ── cert-grid: auto-fill tapi minimum 260px ── */
+    /* Flexbox + justify-content center → card selalu rata tengah,
+       termasuk kalau jumlahnya ganjil */
+    .cert-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .cert-card {
+      flex: 0 1 280px;     /* lebar ideal, tidak memaksa melebar */
+      max-width: 320px;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    /* ── cert-body teks tidak overflow ── */
+    .cert-body h3 {
+      font-size: 0.92rem;
+      word-break: break-word;
+    }
+    .cert-body p {
+      font-size: 0.8rem;
+      word-break: break-word;
+    }
+
+    /* ── section-title rata tengah dengan padding cukup ── */
+    .section-title {
+      text-align: center;
+      padding: 0 8px;
+    }
+
+    /* =====================================================
+       TABLET  ≤ 768px
+       ===================================================== */
+    @media (max-width: 768px) {
+      .cert-grid { gap: 16px; }
+      .cert-card  { flex: 0 1 240px; max-width: 280px; }
+    }
+
+    /* =====================================================
+       MOBILE  ≤ 540px — card full-width, tetap centered
+       ===================================================== */
+    @media (max-width: 540px) {
+      .cert-grid {
+        gap: 14px;
+        padding: 0 4px;
+      }
+      /* Card melebar penuh di HP agar tidak terlalu kecil */
+      .cert-card { flex: 0 1 100%; max-width: 400px; }
+
+      /* ── Page hero lebih compact ── */
+      .page-hero { padding: calc(var(--navbar-h) + 32px) 0 32px; }
+      .page-hero h1 { font-size: 1.8rem; }
+      .page-hero p  { font-size: 0.87rem; }
+
+      /* ── Section title lebih kecil ── */
+      .section-title h2 { font-size: 1.4rem; }
+      .section-title p  { font-size: 0.87rem; }
+
+      /* ── Card thumb sedikit lebih pendek ── */
+      .cert-thumb { height: 160px; }
+
+      /* ── Cert body padding lebih compact ── */
+      .cert-body { padding: 14px 16px; }
+      .cert-body h3 { font-size: 0.9rem; margin-bottom: 5px; }
+      .cert-body p  { font-size: 0.78rem; }
+
+      /* ── Section spacing ── */
+      .section { padding: 48px 0; }
+
+      /* ── Modal lebih kecil di HP ── */
+      .modal-content { width: 96%; border-radius: 14px; }
+      .modal-body { padding: 18px 20px 22px; }
+      .modal-body h3 { font-size: 1rem; }
+      .modal-body p  { font-size: 0.85rem; }
+    }
+
+    /* =====================================================
+       VERY SMALL  ≤ 360px
+       ===================================================== */
+    @media (max-width: 360px) {
+      .cert-grid { max-width: 100%; }
+      .page-hero h1 { font-size: 1.5rem; }
+      .cert-thumb { height: 140px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">My<span>Portfolio</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-me.html">About Me</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="certificates.html">Certificates</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="index.html"><i class="fas fa-home"></i>&nbsp; Home</a>
+    <a href="about-me.html"><i class="fas fa-user"></i>&nbsp; About Me</a>
+    <a href="skills.html"><i class="fas fa-code"></i>&nbsp; Skills</a>
+    <a href="projects.html"><i class="fas fa-folder-open"></i>&nbsp; Projects</a>
+    <a href="certificates.html"><i class="fas fa-certificate"></i>&nbsp; Certificates</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i>&nbsp; Contact</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <h1>Certificates</h1>
+      <p>Sertifikat dan penghargaan yang aku raih sebagai bukti dedikasi dalam belajar.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i>
+        <span>Certificates</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SEMINAR CERTIFICATES
+  ══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Seminar -->
+      <div class="section-title reveal">
+        <h2>Olahraga</h2>
+        <p>Piagam penghargaan Kepengurusan</p>
+      </div>
+
+      <div class="cert-grid" style="margin-bottom: 64px;">
+
+        <div class="cert-card reveal"
+          data-title="Piagam penghargaan Ketua Badminton"
+          data-desc="Saya Berpartisipasi sebagai Ketua sekaligus melatih Badminton di SMAN 2 Mauk Kab. Tangerang."
+          data-img="sertifikat-sanlat.webp">
+          <div class="cert-thumb" style="background: linear-gradient(135deg, #274c77, #6096ba);">
+            <div class="cert-thumb-placeholder">
+              <i class="fas fa-award"></i>
+              <span style="font-size:0.82rem; font-weight:600;">Piagam penghargaan Badminton</span>
+            </div>
+            <div class="cert-zoom"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="cert-body">
+            <span class="badge">Olahraga</span>
+            <h3>Ketua badminton</h3>
+            <p><i class="fas fa-calendar" style="color:var(--primary);"></i> Mei 2026 &bull; SMAN 2 Mauk</p>
+          </div>
+        </div>
+
+        
+
+      </div>
+
+      <!-- Workshop -->
+      <div class="section-title reveal">
+        <h2>Ilmiah</h2>
+        <p>Dedikasi yang aku lakukan sebagai pengembangan ilmu pengetahuan maupun akademik.</p>
+      </div>
+
+      <div class="cert-grid" style="margin-bottom: 64px;">
+
+        <div class="cert-card reveal"
+          data-title="Sertifikasi Karya Tulis Ilmiah"
+          data-desc="Jejak pembelajaran dan pengalaman ilmiah yang terus berkembang seiring waktu."
+          data-img="">
+          <div class="cert-thumb" style="background: linear-gradient(135deg, #e44d26, #f16529);">
+            <div class="cert-thumb-placeholder">
+              <i class="fas fa-award"></i>
+              <span style="font-size:0.82rem; font-weight:600;">Karya Tulis Ilmiah</span>
+            </div>
+            <div class="cert-zoom"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="cert-body">
+            <span class="badge">Ilmiah</span>
+            <h3>Penelitian Karya Tulis Ilmiah</h3>
+            <p><i class="fas fa-calendar" style="color:var(--primary);"></i> Januari 2026 &bull; Bidang Akademik</p>
+          </div>
+        </div>
+
+
+      </div>
+
+      <!-- Lomba / Competition -->
+      <div class="section-title reveal">
+        <h2>Keagamaan</h2>
+        <p>Sertifikat Pemberian Kepada Anggota SANLAT.</p>
+      </div>
+
+      <div class="cert-grid" style="margin-bottom: 64px;">
+
+        <div class="cert-card reveal"
+          data-title="Sertifikasi Anggota Pesantren Kilat"
+          data-desc="Peserta Mengikuti kegiatan islami di bulan suci ramadhai. Diselenggarakan oleh SMAN 2 Rajeg Kab. Tangerang."
+          data-img="#">
+          <div class="cert-thumb" style="background: linear-gradient(135deg, #4285f4, #34a853);">
+            <div class="cert-thumb-placeholder">
+              <i class="fas fa-award"></i>
+              <span style="font-size:0.82rem; font-weight:600;">Sertifikasi Anggota Pesantren Kilat</span>
+            </div>
+            <div class="cert-zoom"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="cert-body">
+            <span class="badge">Keagamaan</span>
+            <h3>Kegiatan Pesantren Kilat</h3>
+            <p><i class="fas fa-calendar" style="color:var(--primary);"></i> Maret 2026 &bull; SMAN 2 Mauk</p>
+          </div>
+        </div>
+
+
+        <div class="cert-card reveal"
+          data-title="Tahfidz"
+          data-desc="Siswa mengikuti kegiatan menghapal AL-Qur'an yang Diselenggarakan sekolah dalam menanamkan nilai agama dan akhlak yang baik."
+          data-img="">
+          <div class="cert-thumb" style="background: linear-gradient(135deg, #2b6cb0, #63b3ed);">
+            <div class="cert-thumb-placeholder">
+              <i class="fas fa-award"></i>
+              <span style="font-size:0.82rem; font-weight:600;">Tahfidz Al-Qur'an</span>
+            </div>
+            <div class="cert-zoom"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="cert-body">
+            <span class="badge">Program sekolah</span>
+            <h3>Penghapal Al-Qur'an</h3>
+            <p><i class="fas fa-calendar" style="color:var(--primary);"></i>  April 2026 &bull; program keagamaan</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Training -->
+     
+
+      
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       CERTIFICATE MODAL
+  ══════════════════════════════════════════ -->
+  <div class="modal-overlay" id="cert-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+      <!-- If image exists it will show, otherwise placeholder -->
+      <img class="modal-img" id="modal-img" src="" alt="Certificate" style="display:none;">
+      <div class="modal-img-placeholder" id="modal-placeholder">
+        <i class="fas fa-certificate"></i>
+        <p style="color:rgba(255,255,255,0.8); font-weight:600;">Preview Sertifikat</p>
+        <p style="color:rgba(255,255,255,0.6); font-size:0.82rem;">Tambahkan gambar sertifikat asli Anda</p>
+      </div>
+      <div class="modal-body">
+        <h3 id="modal-title">Judul Sertifikat</h3>
+        <p id="modal-desc" style="margin-top:10px; color:var(--text-mid);"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+     
+      <p class="footer-quote">"Belajar adalah investasi terbaik yang tidak akan pernah rugi."</p>
+      <div class="footer-socials">
+        <a href="https://instagram.com/win.senpaii" class="footer-social"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@win.senpaii" class="footer-social"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="footer-social"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <p class="footer-copy">&copy; ;">2026 Erwinsyah Ramadhan - SMA Fase IPA.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
